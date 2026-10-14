@@ -21,16 +21,13 @@ $(function () {
 
 $(document).on("click", ".view-order-details", function () {
     var tr = $(this).closest('tr');
-    var order_id = tr.find('td:eq(1)').text(); // Assuming order_id is in the second column
+    var order_id = tr.find('td:eq(1)').text().trim();
 
     var data = {
         order_id: order_id
     };
 
-    //var isDelete = confirm("Are you sure to view " + order_id + " item?");
-    // if (isDelete) {
-    callApi("POST", POST_orderDetailsUrl, data);
-    // }
-    window.location.href = "http://127.0.0.1:5500/ui/order_details.html";
-    
+    $.post(POST_orderDetailsUrl, data).always(function () {
+        window.location.href = "order_details.html?order_id=" + encodeURIComponent(order_id);
+    });
 });

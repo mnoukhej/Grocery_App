@@ -33,8 +33,8 @@ def post_order_details():
 
 @app.route("/getOrderDetails", methods=["GET"])
 def get_order_details():
-    order_details = order_details_dao.get_order_details(connection)
-    #order_details = order_details_dao.get_order_details(connection, request.form['order_id'])
+    order_id = request.args.get("order_id")
+    order_details = order_details_dao.get_order_details(connection, order_id)
     response = jsonify(order_details)
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response

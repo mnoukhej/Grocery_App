@@ -49,7 +49,7 @@ function productParser(product) {
         id : product.id,
         name : product.employee_name,
         unit : product.employee_name,
-        price : product.employee_namef
+        price : product.employee_name
     }
 }
 

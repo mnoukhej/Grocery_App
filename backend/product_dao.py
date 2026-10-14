@@ -24,7 +24,7 @@ def get_all_products(connection):
             {
                 "product_id": product_id,
                 "name": name,
-                "uom_id": uom_name,
+                "uom_id": uom_id,
                 "price_per_unit": price_per_unit,
                 "uom_name": uom_name,
             }
