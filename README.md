@@ -7,6 +7,7 @@
 
 <!-- TREE_START -->
 ```
+├── Dockerfile
 ├── README.md
 ├── backend
 │   ├── order_details_dao.py
@@ -16,6 +17,7 @@
 │   ├── sql_connection.py
 │   └── uom_dao.py
 ├── database.sql
+├── docker-compose.yml
 ├── requirements.txt
 ├── run_server.bat
 ├── seed_data.py

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.git/
+.github/
+.gitignore
+.env
+.vscode/
+.idea/
+test_app.py
+*.log
+.DS_Store

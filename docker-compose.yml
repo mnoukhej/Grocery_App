@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  db:
+    image: mysql:8.0
+    container_name: grocery_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gs
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Grocery Store Web Application Service
+  web:
+    build: .
+    image: grocery-store-app:latest
+    container_name: grocery_app
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_MODE=direct
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=gs
+      - DB_USER=root
+      - DB_PASSWORD=root
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
