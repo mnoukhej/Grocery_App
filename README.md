@@ -17,7 +17,10 @@
 │   └── uom_dao.py
 ├── database.sql
 ├── requirements.txt
+├── run_server.bat
+├── seed_data.py
 ├── setup.bat
+├── test_app.py
 ├── ui
 │   ├── css
 │   │   ├── bootstrap.min.css
