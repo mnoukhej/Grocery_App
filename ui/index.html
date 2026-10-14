@@ -1,148 +1,162 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>GSMS</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="csrf-token"
-      content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/bootstrap.min.css"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/style.css?v=1.0"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/sidebar-menu.css?v=1.0"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/custom.css?v=1.3.3"
-    />
-  </head>
-  <body class="tooltips">
-    <div class="container">
-      <div class="header content rows-content-header">
-        <button class="button-menu-mobile show-sidebar">
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="navbar navbar-default" role="navigation">
-          <div class="container">
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav visible-lg visible-md limit-chars">
-                <ul class="breadcrumb">
-                  <a href="index.html">
-                    <i
-                      class="zmdi zmdi-view-dashboard zmdi-hc-fw"
-                      title="Orders"
-                    ></i>
-                  </a>
-                  <a href="manage-product.html">
-                    <i
-                      class="zmdi zmdi-assignment zmdi-hc-fw"
-                      title="Products"
-                    ></i>
-                  </a>
-                </ul>
-              </ul>
-            </div>
-          </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Grocery Store Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/modern.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="app-navbar">
+    <div class="brand-wrapper">
+      <div class="brand-icon">
+        <i class="fa-solid fa-basket-shopping"></i>
+      </div>
+      <div>
+        <span class="brand-title">FreshStore <span class="brand-badge">ERP</span></span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-link-item active">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="manage-product.html" class="nav-link-item">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Products</span>
+        </a>
+      </li>
+      <li>
+        <a href="order.html" class="nav-link-item">
+          <i class="fa-solid fa-cart-plus"></i>
+          <span>New Order</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="db-status-pill">
+        <span class="status-dot"></span>
+        <span>MySQL Live</span>
+      </div>
+      <a href="order.html" class="btn-modern btn-modern-primary">
+        <i class="fa-solid fa-plus"></i>
+        <span>Create Order</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <!-- Header -->
+    <div class="page-header-row">
+      <div class="page-title-box">
+        <h1>Sales & Orders Dashboard</h1>
+        <p>Monitor real-time store performance, customer orders, and transaction history.</p>
+      </div>
+      <div>
+        <a href="manage-product.html" class="btn-modern btn-modern-secondary">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Manage Inventory</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- KPI Metric Cards -->
+    <div class="stats-grid">
+      <div class="stat-card emerald">
+        <div class="stat-content">
+          <span class="stat-label">Total Revenue</span>
+          <span class="stat-value" id="kpiTotalRevenue">₹ 0.00</span>
+          <span class="stat-subtext"><i class="fa-solid fa-arrow-trend-up"></i> Live Store Sales</span>
+        </div>
+        <div class="stat-icon-wrapper emerald">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
         </div>
       </div>
 
-      <div class="right content-page">
-        <div class="body content rows scroll-y">
-          <form class="form-horizontal" action="">
-            <div class="box-info full" id="taskFormContainer">
-              <h2>Grocery Store Management System</h2>
-              <div class="panel-body pt-0">
-                <div class="row mb-4">
-                  <div class="col-sm-12">
-                    <a
-                      href="order.html"
-                      class="btn btn-sm btn-primary pull-right ml-3"
-                    >
-                      New Order
-                    </a>
-                    <a
-                      href="manage-product.html"
-                      class="btn btn-sm btn-primary pull-right"
-                    >
-                      Manage Products
-                    </a>
-                  </div>
-                </div>
-                <table class="table table-bordered">
-                  <thead>
-                    <th>Date</th>
-                    <th>Order Number</th>
-                    <th>Customer Name</th>
-                    <th>Total Cost</th>
-                    <th>Order Details</th>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-          </form>
-          <div class="modal" id="userProfileModal" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body text-center"></div>
-              </div>
-            </div>
-          </div>
+      <div class="stat-card indigo">
+        <div class="stat-content">
+          <span class="stat-label">Total Orders</span>
+          <span class="stat-value" id="kpiTotalOrders">0</span>
+          <span class="stat-subtext"><i class="fa-solid fa-receipt"></i> Completed Transactions</span>
+        </div>
+        <div class="stat-icon-wrapper indigo">
+          <i class="fa-solid fa-bag-shopping"></i>
         </div>
       </div>
 
-      <div
-        class="modal fade-scale"
-        id="myModal"
-        role="dialog"
-        data-backdrop="static"
-      >
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-body text-center">
-              <img
-                src="https://demo.test.cloint.com/assets/images/spinner.gif"
-                width="40"
-                style="margin: 60px auto"
-                alt=""
-              />
-            </div>
-          </div>
+      <div class="stat-card amber">
+        <div class="stat-content">
+          <span class="stat-label">Avg. Order Value</span>
+          <span class="stat-value" id="kpiAvgOrder">₹ 0.00</span>
+          <span class="stat-subtext"><i class="fa-solid fa-chart-line"></i> Revenue per customer</span>
+        </div>
+        <div class="stat-icon-wrapper amber">
+          <i class="fa-solid fa-wallet"></i>
+        </div>
+      </div>
+
+      <div class="stat-card rose">
+        <div class="stat-content">
+          <span class="stat-label">Active Products</span>
+          <span class="stat-value" id="kpiTotalProducts">--</span>
+          <span class="stat-subtext"><i class="fa-solid fa-check"></i> Available in Catalog</span>
+        </div>
+        <div class="stat-icon-wrapper rose">
+          <i class="fa-solid fa-layer-group"></i>
         </div>
       </div>
     </div>
-  </body>
+
+    <!-- Orders Data Table Card -->
+    <div class="content-card">
+      <div class="card-header-bar">
+        <div class="card-header-title">
+          <i class="fa-solid fa-clock-rotate-left" style="color: var(--primary);"></i>
+          <span>Recent Customer Orders</span>
+          <span id="ordersCountBadge" class="brand-badge">0 Orders</span>
+        </div>
+        <div class="search-box-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="orderSearchInput" class="search-input" placeholder="Search customer, order ID, or date...">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="modern-table" id="ordersTable">
+          <thead>
+            <tr>
+              <th style="width: 12%;">Order #</th>
+              <th style="width: 25%;">Customer</th>
+              <th style="width: 25%;">Date & Time</th>
+              <th style="width: 18%;">Grand Total</th>
+              <th style="width: 20%; text-align: center;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <!-- Populated via dashboard.js -->
+            <tr>
+              <td colspan="5" class="text-center" style="padding: 3rem; text-align: center; color: var(--text-muted);">
+                <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color: var(--primary); margin-bottom: 0.5rem;"></i>
+                <p>Loading orders from database...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
 
   <script src="js/packages/jquery.min.js"></script>
   <script src="js/custom/common.js"></script>
   <script src="js/custom/dashboard.js"></script>
+</body>
 </html>

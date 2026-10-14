@@ -12,7 +12,7 @@ def run_all_tests():
     # 1. UI Root
     req = urllib.request.urlopen(f"{BASE}/")
     html = req.read().decode("utf-8")
-    assert "<title>GSMS</title>" in html
+    assert "Grocery Store Management System" in html
     print("[PASS] 1. Web UI Dashboard is serving correctly")
 
     # 2. Products UI page
@@ -24,13 +24,13 @@ def run_all_tests():
     # 3. New Order UI page
     req = urllib.request.urlopen(f"{BASE}/order.html")
     html = req.read().decode("utf-8")
-    assert "GSMS" in html
+    assert "Grocery Store Management System" in html
     print("[PASS] 3. Order UI is serving correctly")
 
     # 4. Order Details UI page
     req = urllib.request.urlopen(f"{BASE}/order_details.html")
     html = req.read().decode("utf-8")
-    assert "Order Detail" in html
+    assert "Grocery Store Management System" in html
     print("[PASS] 4. Order Details UI is serving correctly")
 
     # 5. GET /getProducts

@@ -1,115 +1,182 @@
-<!--this is order_details.html file-->
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>order_details</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="csrf-token"
-      content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/bootstrap.min.css"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/style.css?v=1.0"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/sidebar-menu.css?v=1.0"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/custom.css?v=1.3.3"
-    />
-  </head>
-  <body class="tooltips">
-    <div class="container">
-      <div class="header content rows-content-header">
-        <button class="button-menu-mobile show-sidebar">
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="navbar navbar-default" role="navigation">
-          <div class="container">
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav visible-lg visible-md limit-chars">
-                <ul class="breadcrumb">
-                  <a href="index.html">
-                    <i
-                      class="zmdi zmdi-view-dashboard zmdi-hc-fw"
-                      title="Orders"
-                    ></i>
-                  </a>
-                  <a href="manage-product.html">
-                    <i
-                      class="zmdi zmdi-assignment zmdi-hc-fw"
-                      title="Products"
-                    ></i>
-                  </a>
-                </ul>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Invoice - Grocery Store Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/modern.css">
+  <style>
+    @media print {
+      .app-navbar, .no-print { display: none !important; }
+      body { background: #fff !important; }
+      .main-wrapper { max-width: 100% !important; padding: 0 !important; }
+      .content-card { box-shadow: none !important; border: 1px solid #ccc !important; }
+    }
+  </style>
+</head>
+<body>
 
-      <div class="right content-page">
-        <div class="body content rows scroll-y">
-          <div class="box-info full" id="taskFormContainer">
-            <h2>Order Detail</h2>
-            <div class="panel-body pt-0">
-              <div class="row mb-4">
-                <div class="col-sm-12">
-                  <th>#OrderID:</th>
-                  <td id="order_id"></td>
-                  <br />
-                  <th>#CustomerName:</th>
-                  <td id="customer_name"></td>
-                </div>
-              </div>
-              <table class="table table-bordered">
-                <thead>
-                  <th style="width: 6%">Sl. No</th>
-                  <th>Name</th>
-                  <th>Price Per Unit</th>
-                  <th>Unit</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+  <!-- Top Navigation -->
+  <nav class="app-navbar no-print">
+    <div class="brand-wrapper">
+      <div class="brand-icon">
+        <i class="fa-solid fa-basket-shopping"></i>
+      </div>
+      <div>
+        <span class="brand-title">FreshStore <span class="brand-badge">ERP</span></span>
       </div>
     </div>
-    <script src="js/packages/jquery.min.js"></script>
-    <script src="js/custom/common.js"></script>
-    <script src="js/custom/order_details.js"></script>
-    <script src="js/packages/bootstrap.min.js"></script>
-  </body>
+
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-link-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="manage-product.html" class="nav-link-item">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Products</span>
+        </a>
+      </li>
+      <li>
+        <a href="order.html" class="nav-link-item">
+          <i class="fa-solid fa-cart-plus"></i>
+          <span>New Order</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="index.html" class="btn-modern btn-modern-secondary">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Orders</span>
+      </a>
+      <button type="button" class="btn-modern btn-modern-primary" onclick="window.print()">
+        <i class="fa-solid fa-print"></i>
+        <span>Print Invoice</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-wrapper" style="max-width: 900px;">
+    <!-- Breadcrumb and Page Header -->
+    <div class="page-header-row no-print">
+      <div class="page-title-box">
+        <h1>Invoice & Order Breakdown</h1>
+        <p>Itemized invoice details and store transaction summary.</p>
+      </div>
+      <div>
+        <a href="index.html" class="btn-modern btn-modern-secondary">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>All Orders</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Invoice Card -->
+    <div class="content-card" id="invoiceCard">
+      <!-- Invoice Header -->
+      <div style="padding: 2rem; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #ffffff;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+              <div style="width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <h2 style="font-family: 'Outfit'; font-size: 1.5rem; margin: 0; font-weight: 700;">FreshStore Grocery</h2>
+            </div>
+            <p style="opacity: 0.85; font-size: 0.88rem; margin: 0;">Official Sales Receipt & Tax Invoice</p>
+          </div>
+
+          <div style="text-align: right;">
+            <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8;">Order Reference</div>
+            <div style="font-family: 'Outfit'; font-size: 1.6rem; font-weight: 800;">
+              #<span id="order_id">--</span>
+            </div>
+            <span class="brand-badge" style="background: rgba(255,255,255,0.25); color: #fff;">PAID IN FULL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer & Order Meta -->
+      <div style="padding: 1.5rem 2rem; background: #f8fafc; border-bottom: 1px solid var(--border-color); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem;">
+        <div>
+          <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.25rem;">Billed To Customer</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--dark);" id="customer_name">Customer</div>
+        </div>
+        <div>
+          <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.25rem;">Payment Method</div>
+          <div style="font-size: 1rem; font-weight: 600; color: var(--text-main);">Cash / UPI Instant</div>
+        </div>
+        <div>
+          <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.25rem;">Status</div>
+          <div style="display: flex; align-items: center; gap: 0.4rem; color: var(--primary); font-weight: 700;">
+            <span class="status-dot"></span> Completed
+          </div>
+        </div>
+      </div>
+
+      <!-- Items Table -->
+      <div class="table-responsive">
+        <table class="modern-table">
+          <thead>
+            <tr>
+              <th style="width: 8%;">#</th>
+              <th style="width: 42%;">Item Description</th>
+              <th style="width: 15%;">Unit Price</th>
+              <th style="width: 15%;">Quantity</th>
+              <th style="width: 20%; text-align: right;">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="orderDetailsTableBody">
+            <tr>
+              <td colspan="5" style="text-align: center; padding: 2.5rem; color: var(--text-muted);">
+                <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color: var(--primary); margin-bottom: 0.5rem;"></i>
+                <p>Loading order details...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Total Breakdown Footer -->
+      <div style="padding: 1.75rem 2rem; background: #ffffff; border-top: 1px solid var(--border-color);">
+        <div style="max-width: 340px; margin-left: auto;">
+          <div class="summary-row">
+            <span>Total Items Count</span>
+            <strong id="invoiceTotalItems">0 Items</strong>
+          </div>
+          <div class="summary-row">
+            <span>Taxes & GST</span>
+            <span>Included (0%)</span>
+          </div>
+          <div class="summary-row total-row" style="margin-top: 0.5rem;">
+            <span>Grand Total:</span>
+            <span class="total-amount-display" id="invoiceGrandTotal">₹ 0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Print Action -->
+      <div class="no-print" style="padding: 1.25rem 2rem; background: #f8fafc; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+        <a href="index.html" class="btn-modern btn-modern-secondary btn-modern-sm">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Return to Dashboard</span>
+        </a>
+        <button type="button" class="btn-modern btn-modern-primary btn-modern-sm" onclick="window.print()">
+          <i class="fa-solid fa-print"></i>
+          <span>Print Receipt</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/packages/jquery.min.js"></script>
+  <script src="js/custom/common.js"></script>
+  <script src="js/custom/order_details.js"></script>
+</body>
 </html>

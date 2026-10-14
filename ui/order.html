@@ -1,116 +1,239 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title> GSMS </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="csrf-token" content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700">
-    <link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-    <link media="all" type="text/css" rel="stylesheet" href="css/style.css?v=1.0">
-    <link media="all" type="text/css" rel="stylesheet" href="css/custom.css?v=1.3.3">
+  <meta charset="UTF-8">
+  <title>New Order - Grocery Store Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/modern.css">
 </head>
-<body class="tooltips">
-<div class="container">
+<body>
 
-    <div class="header content rows-content-header">
-        <button class="button-menu-mobile show-sidebar">
-            <i class="fa fa-bars"></i>
+  <!-- Top Navigation -->
+  <nav class="app-navbar">
+    <div class="brand-wrapper">
+      <div class="brand-icon">
+        <i class="fa-solid fa-basket-shopping"></i>
+      </div>
+      <div>
+        <span class="brand-title">FreshStore <span class="brand-badge">ERP</span></span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-link-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="manage-product.html" class="nav-link-item">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Products</span>
+        </a>
+      </li>
+      <li>
+        <a href="order.html" class="nav-link-item active">
+          <i class="fa-solid fa-cart-plus"></i>
+          <span>New Order</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="index.html" class="btn-modern btn-modern-secondary">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Orders</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <div class="page-header-row">
+      <div class="page-title-box">
+        <h1>Create Customer Order</h1>
+        <p>Select products, configure order quantities, and record new store transactions.</p>
+      </div>
+      <div>
+        <button type="button" class="btn-modern btn-modern-primary" id="addMoreButton">
+          <i class="fa-solid fa-plus"></i>
+          <span>Add Product Item</span>
         </button>
-        <div class="navbar navbar-default" role="navigation">
-            <div class="container">
-
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav visible-lg visible-md limit-chars">
-                        <ul class="breadcrumb">
-                            <a href="index.html">
-                                <i class="zmdi zmdi-view-dashboard zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Dashboard"></i>
-                            </a>
-                            <a href="manage-product.html">
-                                <i class="zmdi zmdi-assignment zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Products"></i>
-                            </a>
-                        </ul>
-                    </ul>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <div class="right content-page">
-        <div class="body content rows scroll-y">
-            <form action="">
-                <div class="box-info full" id="taskFormContainer">
-                    <h2>New Order
-                        <input name="customerName" id="customerName" type="text" class="form-control" placeholder="Customer Name" style="max-width:230px; float: right;margin-top: -11px">
-                    </h2>
-                    <div class="row" style="margin-bottom: 5px;margin-top: -10px;">
-                        <div class="col-sm-12">
-                            <div class="col-sm-4">
-                                <label >Product</label>
-                            </div>
-                            <div class="col-sm-3">
-                                <label >Price</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <label >Quantity</label>
-                            </div>
-                            <div class="col-sm-3">
-                                <label >Total</label>
-                                <button class="btn btn-sm btn-primary pull-right" style="margin-top: -5px" type="button" id="addMoreButton">Add More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-box-extra" id="itemsInOrder">
-
-                </div>
-
-                <div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="box-info full p-3 mb-3 mt-0">
-                                <div class="col-sm-9 text-right">
-                                    <span><b>Total</b></span>
-                                </div>
-                                <div class="col-sm-3">
-                                    <b><input id="product_grand_total" name="product_grand_total" class="product-grand-total" value="0.0"></input> Rs</b>
-                                    <button class="btn btn-sm btn-primary pull-right" type="button" id="saveOrder">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="product-box hidden">
-                <div class="row product-item">
-                    <div class="col-sm-12">
-                        <div class="box-info full p-3 mb-3 mt-0">
-                            <div class="col-sm-4">
-                                <select name="product" class="form-control cart-product" style="max-width: 250px"></select>
-                            </div>
-                            <div class="col-sm-3">
-                                <input id="product_price" name="product_price" class="product-price" value="0.0"></input>
-                            </div>
-                            <div class="col-sm-2">
-                                <input name="qty" type="number" min="1" placeholder="" class="form-control product-qty" value="1" style="max-width: 100px">
-                            </div>
-                            <div class="col-sm-3">
-                                <input id="item_total" name="item_total" class="product-total"></input><span> Rs</span>
-                                <button class="btn btn-sm btn-danger pull-right remove-row" type="button">Remove</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <form id="orderForm">
+      <div class="order-builder-grid">
+        
+        <!-- Left: Order Builder Column -->
+        <div class="order-items-container">
+          
+          <!-- Customer Information Card -->
+          <div class="content-card" style="margin-bottom: 0;">
+            <div class="card-header-bar">
+              <div class="card-header-title">
+                <i class="fa-solid fa-user-tag" style="color: var(--primary);"></i>
+                <span>Customer Information</span>
+              </div>
             </div>
+            <div style="padding: 1.5rem;">
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="customerName">Customer Full Name *</label>
+                <div style="position: relative;">
+                  <i class="fa-regular fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-subtle);"></i>
+                  <input type="text" name="customerName" id="customerName" class="input-custom" placeholder="e.g. John Doe / Anita Patel" style="padding-left: 2.5rem;" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Items Header Card -->
+          <div class="content-card" style="margin-bottom: 0;">
+            <div class="card-header-bar">
+              <div class="card-header-title">
+                <i class="fa-solid fa-cart-shopping" style="color: var(--primary);"></i>
+                <span>Order Items List</span>
+                <span id="itemsCountBadge" class="brand-badge">1 Item</span>
+              </div>
+              <div>
+                <button type="button" class="btn-modern btn-modern-secondary btn-modern-sm" id="addMoreButton2">
+                  <i class="fa-solid fa-plus"></i>
+                  <span>Add Another Item</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Items Container -->
+            <div id="itemsContainer" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+              <div class="product-box-extra">
+                <!-- Initial item row -->
+                <div class="item-row-card product-item">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Select Product</label>
+                    <select name="product" class="input-custom cart-product" required>
+                      <option value="">-- Choose Product --</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Unit Price</label>
+                    <div style="display: flex; align-items: center; height: 42px;">
+                      <span class="amount-tag" style="font-size: 1.05rem;">₹ </span>
+                      <input id="product_price" name="product_price" class="product-price" value="0.00" readonly style="border: none; background: transparent; font-family: 'Outfit'; font-weight: 700; font-size: 1.05rem; color: #047857; width: 80px; outline: none; margin-left: 4px;">
+                    </div>
+                  </div>
+
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Quantity</label>
+                    <input type="number" name="qty" class="input-custom product-qty" value="1" min="1" step="any" required>
+                  </div>
+
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Line Total</label>
+                    <div style="display: flex; align-items: center; height: 42px;">
+                      <span class="amount-tag" style="font-size: 1.15rem; color: var(--dark);">₹ </span>
+                      <input id="item_total" name="item_total" class="product-total" value="0.00" readonly style="border: none; background: transparent; font-family: 'Outfit'; font-weight: 800; font-size: 1.15rem; color: var(--dark); width: 100px; outline: none; margin-left: 4px;">
+                    </div>
+                  </div>
+
+                  <div>
+                    <button type="button" class="btn-modern btn-modern-danger btn-modern-sm remove-row hideit" style="margin-top: 1.4rem;">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Right: Checkout Sticky Card -->
+        <div>
+          <div class="checkout-sticky-card">
+            <div class="card-header-title" style="margin-bottom: 1.25rem;">
+              <i class="fa-solid fa-receipt" style="color: var(--primary);"></i>
+              <span>Order Summary</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Customer</span>
+              <strong id="summaryCustomer">Guest</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Total Items</span>
+              <strong id="summaryItemCount">1</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Payment Status</span>
+              <span class="brand-badge" style="background: var(--primary-light); color: var(--primary);">Paid (Cash/UPI)</span>
+            </div>
+
+            <div class="summary-row total-row">
+              <span>Grand Total</span>
+              <div style="display: flex; align-items: baseline;">
+                <span class="total-amount-display">₹ </span>
+                <input id="product_grand_total" name="product_grand_total" class="product-grand-total total-amount-display" value="0.00" readonly style="border: none; background: transparent; width: 130px; text-align: right; outline: none;">
+              </div>
+            </div>
+
+            <div style="margin-top: 1.75rem;">
+              <button type="button" class="btn-modern btn-modern-primary" id="saveOrder" style="width: 100%; padding: 0.85rem; font-size: 1rem;">
+                <i class="fa-solid fa-check-double"></i>
+                <span>Confirm & Place Order</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+    <!-- Hidden Template Row for Cloning -->
+    <div class="product-box" style="display: none;">
+      <div class="item-row-card product-item" style="margin-top: 0.75rem;">
+        <div class="form-group-custom">
+          <label class="form-label-custom">Select Product</label>
+          <select name="product" class="input-custom cart-product" required>
+            <option value="">-- Choose Product --</option>
+          </select>
+        </div>
+
+        <div class="form-group-custom">
+          <label class="form-label-custom">Unit Price</label>
+          <div style="display: flex; align-items: center; height: 42px;">
+            <span class="amount-tag" style="font-size: 1.05rem;">₹ </span>
+            <input id="product_price" name="product_price" class="product-price" value="0.00" readonly style="border: none; background: transparent; font-family: 'Outfit'; font-weight: 700; font-size: 1.05rem; color: #047857; width: 80px; outline: none; margin-left: 4px;">
+          </div>
+        </div>
+
+        <div class="form-group-custom">
+          <label class="form-label-custom">Quantity</label>
+          <input type="number" name="qty" class="input-custom product-qty" value="1" min="1" step="any" required>
+        </div>
+
+        <div class="form-group-custom">
+          <label class="form-label-custom">Line Total</label>
+          <div style="display: flex; align-items: center; height: 42px;">
+            <span class="amount-tag" style="font-size: 1.15rem; color: var(--dark);">₹ </span>
+            <input id="item_total" name="item_total" class="product-total" value="0.00" readonly style="border: none; background: transparent; font-family: 'Outfit'; font-weight: 800; font-size: 1.15rem; color: var(--dark); width: 100px; outline: none; margin-left: 4px;">
+          </div>
+        </div>
+
+        <div>
+          <button type="button" class="btn-modern btn-modern-danger btn-modern-sm remove-row" style="margin-top: 1.4rem;">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
+      </div>
     </div>
-</div>
+  </main>
+
+  <script src="js/packages/jquery.min.js"></script>
+  <script src="js/custom/common.js"></script>
+  <script src="js/custom/order.js"></script>
 </body>
-<script src="js/packages/jquery.min.js"></script>
-<script src="js/custom/common.js"></script>
-<script src="js/custom/order.js"></script>
 </html>

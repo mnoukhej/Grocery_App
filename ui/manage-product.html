@@ -1,186 +1,187 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>GSMS</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="csrf-token"
-      content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/bootstrap.min.css"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/style.css?v=1.0"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/sidebar-menu.css?v=1.0"
-    />
-    <link
-      media="all"
-      type="text/css"
-      rel="stylesheet"
-      href="css/custom.css?v=1.3.3"
-    />
-  </head>
-  <body class="tooltips">
-    <div class="container">
-      <div class="header content rows-content-header">
-        <button class="button-menu-mobile show-sidebar">
-          <i class="fa fa-bars"></i>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Products - Grocery Store Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/modern.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="app-navbar">
+    <div class="brand-wrapper">
+      <div class="brand-icon">
+        <i class="fa-solid fa-basket-shopping"></i>
+      </div>
+      <div>
+        <span class="brand-title">FreshStore <span class="brand-badge">ERP</span></span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-link-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="manage-product.html" class="nav-link-item active">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Products</span>
+        </a>
+      </li>
+      <li>
+        <a href="order.html" class="nav-link-item">
+          <i class="fa-solid fa-cart-plus"></i>
+          <span>New Order</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <button type="button" class="btn-modern btn-modern-primary" id="openAddProductModal">
+        <i class="fa-solid fa-plus"></i>
+        <span>Add New Product</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <!-- Header -->
+    <div class="page-header-row">
+      <div class="page-title-box">
+        <h1>Product Catalog & Inventory</h1>
+        <p>Add, edit, search, and manage products, measurement units, and store pricing.</p>
+      </div>
+      <div>
+        <button type="button" class="btn-modern btn-modern-primary" id="openAddProductBtn2">
+          <i class="fa-solid fa-circle-plus"></i>
+          <span>New Product</span>
         </button>
-        <div class="navbar navbar-default" role="navigation">
-          <div class="container">
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav visible-lg visible-md limit-chars">
-                <ul class="breadcrumb">
-                  <a href="index.html">
-                    <i
-                      class="zmdi zmdi-view-dashboard zmdi-hc-fw"
-                      title="Orders"
-                    ></i>
-                  </a>
-                  <a href="manage-product.html">
-                    <i
-                      class="zmdi zmdi-assignment zmdi-hc-fw"
-                      title="Products"
-                    ></i>
-                  </a>
-                </ul>
-              </ul>
-            </div>
-          </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="stats-grid">
+      <div class="stat-card emerald">
+        <div class="stat-content">
+          <span class="stat-label">Total Catalog Products</span>
+          <span class="stat-value" id="statProductCount">0</span>
+          <span class="stat-subtext"><i class="fa-solid fa-boxes-packing"></i> Active SKUs</span>
+        </div>
+        <div class="stat-icon-wrapper emerald">
+          <i class="fa-solid fa-box-open"></i>
         </div>
       </div>
 
-      <div class="right content-page">
-        <div class="body content rows scroll-y">
-          <div class="box-info full" id="taskFormContainer">
-            <h2>Manage Products</h2>
-            <div class="panel-body pt-0">
-              <div class="row mb-4">
-                <div class="col-sm-12">
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-primary pull-right"
-                    data-toggle="modal"
-                    data-target="#productModal"
-                  >
-                    Add New Product
-                  </button>
-                </div>
-              </div>
-              <table class="table table-bordered">
-                <thead>
-                  <th>Product_id</th>
-                  <th>Name</th>
-                  <th>Unit</th>
-                  <th>Price Per Unit</th>
-                  <th style="width: 15%">Action</th>
-                  <!--<th style="width: 10%">Remove</th>-->
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
+      <div class="stat-card indigo">
+        <div class="stat-content">
+          <span class="stat-label">Active Units</span>
+          <span class="stat-value" id="statUomCount">--</span>
+          <span class="stat-subtext"><i class="fa-solid fa-scale-balanced"></i> Each, Kg, Liter, etc.</span>
+        </div>
+        <div class="stat-icon-wrapper indigo">
+          <i class="fa-solid fa-tags"></i>
         </div>
       </div>
 
-      <div
-        class="modal fade-scale"
-        id="productModal"
-        role="dialog"
-        data-backdrop="static"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add New Product</h4>
-            </div>
-            <div class="modal-body">
-              <form id="productForm">
-                <input type="hidden" name="id" id="id" value="0" />
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Name</label>
-                      <input
-                        class="form-control"
-                        placeholder="Name"
-                        name="name"
-                        id="name"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Unit</label>
-                      <select
-                        name="uoms"
-                        id="uoms"
-                        class="form-control"
-                      ></select>
-                    </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Price Per Unit</label>
-                      <input
-                        class="form-control"
-                        placeholder="Price Per Unit"
-                        name="price"
-                        id="price"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary" id="saveProduct">
-                Save
-              </button>
-            </div>
-          </div>
+      <div class="stat-card amber">
+        <div class="stat-content">
+          <span class="stat-label">Average Unit Price</span>
+          <span class="stat-value" id="statAvgPrice">₹ 0.00</span>
+          <span class="stat-subtext"><i class="fa-solid fa-chart-simple"></i> Across all items</span>
+        </div>
+        <div class="stat-icon-wrapper amber">
+          <i class="fa-solid fa-coins"></i>
         </div>
       </div>
     </div>
-    <script src="js/packages/jquery.min.js"></script>
-    <script src="js/custom/common.js"></script>
-    <script src="js/custom/manage-product.js"></script>
-    <script src="js/packages/bootstrap.min.js"></script>
-  </body>
+
+    <!-- Content Table Card -->
+    <div class="content-card">
+      <div class="card-header-bar">
+        <div class="filter-pills" id="uomFilterPills">
+          <span class="filter-pill active" data-unit="all">All Items</span>
+          <!-- Dynamic UOM pills inserted by JS -->
+        </div>
+
+        <div class="search-box-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="productSearchInput" class="search-input" placeholder="Search by name, ID, or unit...">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="modern-table" id="productTable">
+          <thead>
+            <tr>
+              <th style="width: 12%;">Product ID</th>
+              <th style="width: 40%;">Product Name</th>
+              <th style="width: 18%;">Measurement Unit</th>
+              <th style="width: 15%;">Price Per Unit</th>
+              <th style="width: 15%; text-align: center;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <tr>
+              <td colspan="5" style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color: var(--primary); margin-bottom: 0.5rem;"></i>
+                <p>Loading catalog products...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add / Edit Product Modern Modal -->
+  <div class="modal-backdrop-custom" id="customProductModal">
+    <div class="modal-dialog-custom">
+      <div class="modal-header-custom">
+        <h3 id="modalTitle">Add New Product</h3>
+        <button type="button" class="close-modal-btn" id="closeModalBtn">&times;</button>
+      </div>
+
+      <form id="productForm">
+        <input type="hidden" name="id" id="productId" value="0">
+        
+        <div class="modal-body-custom">
+          <div class="form-group-custom" style="margin-bottom: 1.25rem;">
+            <label class="form-label-custom" for="productName">Product Name *</label>
+            <input type="text" class="input-custom" name="name" id="productName" placeholder="e.g. Fresh Red Apples" required>
+          </div>
+
+          <div class="form-group-custom" style="margin-bottom: 1.25rem;">
+            <label class="form-label-custom" for="productUom">Unit of Measurement *</label>
+            <select class="input-custom" name="uoms" id="productUom" required>
+              <option value="">-- Select Unit --</option>
+            </select>
+          </div>
+
+          <div class="form-group-custom" style="margin-bottom: 0.5rem;">
+            <label class="form-label-custom" for="productPrice">Price Per Unit (₹) *</label>
+            <input type="number" step="0.01" min="0" class="input-custom" name="price" id="productPrice" placeholder="e.g. 120.00" required>
+          </div>
+        </div>
+
+        <div class="modal-footer-custom">
+          <button type="button" class="btn-modern btn-modern-secondary" id="cancelModalBtn">Cancel</button>
+          <button type="button" class="btn-modern btn-modern-primary" id="saveProduct">
+            <i class="fa-solid fa-check"></i>
+            <span>Save Product</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/packages/jquery.min.js"></script>
+  <script src="js/custom/common.js"></script>
+  <script src="js/custom/manage-product.js"></script>
+</body>
 </html>
