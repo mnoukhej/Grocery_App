@@ -23,7 +23,7 @@ services:
   # Grocery Store Web Application Service
   web:
     build: .
-    image: grocery-store-app:latest
+    image: mnoukhej/grocery-app:latest
     container_name: grocery_app
     restart: always
     ports:

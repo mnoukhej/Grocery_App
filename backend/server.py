@@ -172,4 +172,6 @@ if __name__ == "__main__":
     print("Starting Python Flask server for Grocery Store Management System")
     # Pre-check database connection
     get_sql_connection()
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
