@@ -13,9 +13,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Set working directory
 WORKDIR /app
 
-# Install dependencies first (for optimal Docker layer caching)
+# Install dependencies using pre-downloaded Linux wheels for fast, deterministic builds
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY wheels/ ./wheels/
+RUN pip install --no-cache-dir --no-index --find-links=./wheels -r requirements.txt && rm -rf ./wheels
+
 
 # Copy application source code and assets
 COPY backend/ ./backend/
