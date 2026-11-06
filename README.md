@@ -72,3 +72,25 @@
 
 ## 🔧 Configuration
 
+## 👨‍💻 Developer & Organization Credit
+
+| **Attribute** | **Details** |
+| :--- | :--- |
+| 👤 **Developer Name** | **Muhammad Noukhez** |
+| 🏢 **Company Name** | **CodeX404 Solutions** |
+| 🌐 **Official Website** | [**codex404solutions.com**](https://codex404solutions.com/) |
+| 📧 **Email** | [mnoukhej@gmail.com](mailto:mnoukhej@gmail.com) |
+| 🐙 **GitHub** | [@mnoukhej](https://github.com/mnoukhej) |
+| 💼 **LinkedIn** | [linkedin.com/in/mnoukhej](https://www.linkedin.com/in/mnoukhej/) |
+
+---
+
+<div align="center">
+
+[![Developer: Muhammad Noukhez](https://img.shields.io/badge/Developer-Muhammad%20Noukhez-00f2fe?style=for-the-badge&logo=github&logoColor=black)](https://github.com/mnoukhej)
+[![Company: CodeX404 Solutions](https://img.shields.io/badge/Company-CodeX404%20Solutions-4facfe?style=for-the-badge&logo=rocket&logoColor=white)](https://codex404solutions.com/)
+[![Website: codex404solutions.com](https://img.shields.io/badge/Website-codex404solutions.com-667eea?style=for-the-badge&logo=googlechrome&logoColor=white)](https://codex404solutions.com/)
+
+<sub>Engineered & Maintained by **Muhammad Noukhez** • **CodeX404 Solutions** ([codex404solutions.com](https://codex404solutions.com/))</sub>
+
+</div>
